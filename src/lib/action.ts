@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { BASE_URL, Expired_time } from "@/lib/utils";
+import { BASE_URL, CreateFormData, Expired_time } from "@/lib/utils";
 import { cookies } from "next/headers";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
 import { revalidatePath } from "next/cache";
@@ -10,8 +10,8 @@ interface FormData {
     get(key: string): string | null;
 }
 
-interface LoginFormData {
-    phone: string;
+interface LoginForm_data {
+    email: string;
     password: string;
 }
 
@@ -20,19 +20,61 @@ function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function isValidPassword(password: string): boolean {
-    return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
-}
-
 function isValidUserName(userName: string): boolean {
     return /^[a-zA-Z0-9 ]{3,30}$/.test(userName);
 }
 
-function isValidPhoneNumber(number: string): boolean {
-    // Regular expression to match U.S. phone number formats
-    const usPhoneNumberPattern =
-        /^(?:\+1[-.\s]?)?(?:\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
-    return usPhoneNumberPattern.test(number);
+
+/* 
+    ! ############ GET DATA IN SERVER SIDE FUNCTION ###################
+    * @param {string} End_Point - request end point
+    * @param {object} headers - request headers
+    * @param {object} method - request Another method
+    ? {...} - request body parameters or query parameters
+*/
+async function GetDataInServerSide(
+    End_Point = "",
+    ExtraMethod = {},
+    Authorization = true
+) {
+    /*
+     * Default Headers If Not Provided Or Not Valid.
+     */
+    let headers = Authorization
+        ? {
+            "Content-Type": "application/json",
+            Authorization: hasCookie("token", { cookies }) ? `Bearer ${getCookie("token", { cookies })}` : getCookie("session", { cookies }),
+        }
+        : {
+            "Content-Type": "application/json",
+        };
+
+    let redirectPath;
+    try {
+        const response = await fetch(BASE_URL + End_Point, {
+            method: "GET",
+            headers: headers as any,
+            // ? if You Want To Use Extra Method For Request Such as Cache Control, etc.
+            cache: "no-store",
+        });
+        const data = await response.json();
+        if (response.status === 201 || response.status === 200) {
+            return data;
+        } else if (response.status === 401) {
+            redirectPath = "/login";
+        } else {
+            throw new Error(
+                data.message || response.error || response?.data?.message
+            );
+        }
+    } catch (error) {
+        throw new Error(
+            error?.response?.message ||
+            "Something went wrong please try again later !!!"
+        );
+    } finally {
+        redirectPath && redirect(redirectPath);
+    }
 }
 
 
@@ -40,57 +82,39 @@ function isValidPhoneNumber(number: string): boolean {
 /* 
   ! ############ LOGIN FUNCTION ###################
   * @param {object} prevState - previous state of the form
-  * @param {object} formData - form data
+  * @param {object} Form_data - form data
   ? @returns {object} - return object with error or success message and User token
 */
-async function handleLogin(prevState: any, formData: FormData): Promise<any> {
-    const phone = formData.get("phone");
-    const password = formData.get("password");
+async function handleLogin(prevState: any, Form_data: FormData) {
+    const email = Form_data.get("email");
+    const password = Form_data.get("password");
 
-    if (!phone || !password) {
-        return { phone: "Phone number or password is missing" };
+    if (!email || !isValidEmail(email)) {
+        return { email: "Email is not valid" };
     }
 
-    const FormData: LoginFormData = {
-        phone: "+1" + phone,
-        password: password,
-    };
+    if (!password) {
+        return { password: "password is missing" };
+    }
 
-    if (!isValidPhoneNumber(FormData.phone)) {
-        return { phone: "Phone number is not valid" };
-    }
-    if (!isValidPassword(FormData.password)) {
-        return {
-            password:
-                "Password is not valid must have at least one Uppercase & lowercase",
-        };
-    }
     // ######### Post Actions #########
     else {
+        const newFormData = CreateFormData({ email, password });
         let redirectPath: string | null = null;
         try {
-            const response = await fetch(BASE_URL + "/api/login/", {
+            const response = await fetch(BASE_URL + "/login", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(FormData),
+                body: newFormData,
             });
             const data = await response.json();
 
             if (response.status === 201 || response.status === 200) {
-                cookies().set("token", data?.token, Expired_time);
-                redirectPath = `/`;
-                return { success: "User logged in successfully" };
+                return { success: data?.message , token: data?.data?.token };
             } else if (response.status === 403) {
-                redirectPath = `/verify-password?phone=${FormData.phone}`;
+                redirectPath = `/sign-up`;
             } else {
                 redirectPath = null;
-                return data?.phone
-                    ? data
-                    : data?.password
-                        ? data
-                        : { phone: data?.message || "User not found" };
+                return data?.message === 'password doest match' ? { password: data?.message } : { error: "User not found" };
             }
         } catch (error: any) {
             redirectPath = null;
@@ -109,4 +133,4 @@ async function handleLogin(prevState: any, formData: FormData): Promise<any> {
 
 
 
-export { handleLogin }
+export { handleLogin, GetDataInServerSide }
