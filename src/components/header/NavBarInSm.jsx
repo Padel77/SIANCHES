@@ -3,7 +3,7 @@ import { NavItems } from "@/lib/constant-data"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import NavLink from "@/components/header/NavLink"
 
-import {  Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 
 export function NavBarInSm() {
     return (

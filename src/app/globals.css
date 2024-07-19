@@ -67,3 +67,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+* {
+  font-family: HelveticaNeueLTW05-57Cond;
+} 

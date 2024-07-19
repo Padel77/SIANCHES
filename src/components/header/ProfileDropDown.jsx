@@ -32,7 +32,7 @@ export default function ProfileDropDown({ user_detail }) {
           <AvatarFallback>US</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent >
+      {/* <DropdownMenuContent > */}
         <DropdownMenuItem className="w-[366px] max-w-full min-h-[140px] rounded-md py-2 border border-secondary-foreground flex items-start justify-between flex-col hover:bg px-0">
           <div className="flex items-center gap-2">
             <Avatar className='w-[60px] h-[60px]'>
@@ -49,7 +49,7 @@ export default function ProfileDropDown({ user_detail }) {
             Log Out
           </button>
         </DropdownMenuItem>
-      </DropdownMenuContent>
+      {/* </DropdownMenuContent> */}
     </DropdownMenu>
   );
 }
