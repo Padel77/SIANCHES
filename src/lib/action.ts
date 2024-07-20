@@ -131,6 +131,52 @@ async function handleLogin(prevState: any, Form_data: FormData) {
     }
 }
 
+async function handleSignUp(prevState: any, Form_data: FormData) {
+    const email = Form_data.get("email");
+    const password = Form_data.get("password");
+
+    if (!email || !isValidEmail(email)) {
+        return { email: "Email is not valid" };
+    }
+
+    if (!password) {
+        return { password: "password is missing" };
+    }
+
+    // ######### Post Actions #########
+    else {
+        const newFormData = CreateFormData({ email, password });
+        let redirectPath: string | null = null;
+        try {
+            const response = await fetch(BASE_URL + "/login", {
+                method: "POST",
+                body: newFormData,
+            });
+            const data = await response.json();
+
+            if (response.status === 201 || response.status === 200) {
+                return { success: data?.message , token: data?.data?.token };
+            } else if (response.status === 403) {
+                redirectPath = `/sign-up`;
+            } else {
+                redirectPath = null;
+                return data?.message === 'password doest match' ? { password: data?.message } : { error: "User not found" };
+            }
+        } catch (error: any) {
+            redirectPath = null;
+            throw new Error(
+                error?.response?.data?.message ||
+                error?.message ||
+                "Something went wrong. Please try again later!"
+            );
+        } finally {
+            if (redirectPath) {
+                redirect(redirectPath);
+            }
+        }
+    }
+}
 
 
-export { handleLogin, GetDataInServerSide }
+
+export { handleLogin ,handleSignUp, GetDataInServerSide }
