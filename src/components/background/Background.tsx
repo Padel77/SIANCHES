@@ -6,11 +6,22 @@ interface BackgroundProps {
   title?: string;
 }
 
-export const Background: React.FC<BackgroundProps> = ({ imageUrl, color,title }) => {
+export const Background: React.FC<BackgroundProps> = ({
+  imageUrl,
+  color,
+  title,
+}) => {
   const style = {
     backgroundImage: imageUrl ? `url(${imageUrl})` : undefined,
     backgroundColor: color,
   };
 
-  return <div style={style} className="w-full relative h-screen fixed bg-cover bg-center text-white  bottom-0 left-0">{title}</div>;
+  return (
+    <div
+      style={style}
+      className="w-full relative h-screen fixed bg-cover bg-center text-white "
+    >
+      <span className="flex h-full text-center items-center justify-center text-7xl  italic font-bold max-w-xl m-auto ">{title}</span>
+    </div>
+  );
 };

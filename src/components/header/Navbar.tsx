@@ -1,14 +1,13 @@
 "use client";
+
 import Image from "next/image";
-import Logo from "../../../public/assets/Vector.svg";
-import User from "../../../public/assets/next.svg";
-import Menu from "../../../public/assets/vercel.svg";
 import Link from "next/link";
 import { useState } from "react";
-import { Globe } from "lucide-react";
-import { Heart } from "lucide-react";
+import { ArrowUpRight, Globe, Heart } from "lucide-react";
 import { NavLink } from "./NavLink";
 import { Background } from "../background/Background";
+import Logo from "../../../public/assets/Frame 33.svg";
+import { Button } from "../ui/button";
 
 const navLinks = [
   { name: "Home", link: "/" },
@@ -18,6 +17,7 @@ const navLinks = [
   { name: "Our Partners", link: "/Partners" },
   { name: "Contact us", link: "/Contact" },
 ];
+
 const NavItems = [
   {
     id: 1,
@@ -44,16 +44,22 @@ const NavItems = [
     activeLink: "Properties",
     children: [
       {
-        id: 3,
-        name: "Submenu 1",
-        href: "/Properties/Properties",
-        activeLink: "submenu1",
+        id: 6,
+        name: "Buy",
+        href: "/Properties/Buy",
+        activeLink: "Buy",
       },
       {
-        id: 4,
-        name: "Submenu 2",
-        href: "/Properties/Properties",
-        activeLink: "submenu2",
+        id: 7,
+        name: "Sell",
+        href: "/Properties/Sell",
+        activeLink: "Sell",
+      },
+      {
+        id: 8,
+        name: "Rent",
+        href: "/Properties/Rent",
+        activeLink: "Rent",
       },
     ],
   },
@@ -72,37 +78,39 @@ const NavItems = [
 ];
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
-    <div className="top-0 left w-full realtive">
-      <nav className="flex px-5 h-20 top-8 py-4 text-sm  lg:container  absolute top-0 left-0 right-0 z-10">
-        <div className="flex items-center  gap-x-5 m-auto  ">
-          <Image src={Logo} alt="Logo" />
+    <div className="top-0 left w-full relative">
+      <nav className="flex px-5 h-20 py-4 text-sm lg:container absolute top-0 left-0 right-0 z-10">
+        <div className="flex items-center gap-x-5 m-auto">
+          <Link href="/" ><Image src={Logo} alt="Logo" /></Link>
           <NavLink links={NavItems} />
-          <div className=" flex items-center gap-x-2 ">
-            <div className=" flex items-center text-[12px] ">
-              <Globe size={24} className="text-primary" />
-              <span className="text-primary">Ar</span>
+          <div className="flex items-center text-[#f2f2f2] gap-x-2">
+            <div className="flex items-center gap-x-1 text-[12px]">
+              <Globe size={20} strokeWidth={1} />
+              <span>Ar</span>
             </div>
-            <span className="border-r-2 h-8"></span>
-            <div className="flex items-center font-medium ">
+            <span className="border-r border-1 h-8"></span>
+            <div className="flex items-center font-medium">
               <Link href="/Favourite">
-                <Heart className="text-primary" />
+                <Heart size={24} strokeWidth={1} />
               </Link>
             </div>
+            <Link href="/sign-up"><Button className="bg-primary text-white capitalize">Become an ambassador <ArrowUpRight size={16} /></Button></Link>
           </div>
         </div>
-        {/* mobile menu */}
+
+        {/* Mobile Menu */}
         {open && (
           <div className="lg:hidden fixed top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
             <div className="flex flex-col items-center space-y-6 font-bold">
-              {navLinks.map((item, index) => (
+              {NavItems.map((item, index) => (
                 <Link
                   onClick={() => setOpen(!open)}
                   key={index}
                   className="font-medium text-base text-primary"
-                  href={item.link}
+                  href={item.href}
                 >
                   {item.name}
                 </Link>
@@ -110,35 +118,13 @@ const Navbar = () => {
             </div>
           </div>
         )}
-        {/* mobile menu */}
-        {/* <div className="flex justify-between items-center gap-x-5 lg:gap-x-14">
-        <Link className="hidden lg:block font-medium text-[16px]" href="#">
-          Open an Account
-        </Link>
-        <div className="hidden lg:flex justify-between items-center gap-x-3">
-          <Image src={User} alt="user" />
-          <Link className="font-medium text-[16px]" href="#">
-            Sign In
-          </Link>
-        </div>
-        <Image
-          className="lg:hidden"
-          src={User}
-          width="32"
-          height="32"
-          alt="user"
-        />
-        <Image
-          onClick={() => setOpen(!open)}
-          className="lg:hidden"
-          src={Menu}
-          width="32"
-          height="32"
-          alt="menu"
-        />
-      </div> */}
+        {/* Mobile Menu */}
       </nav>
-      <Background imageUrl="https://sunchase.backend.aait-d.com/storage/images/sliders/gLsFfVwMltoXopav24ihPhDiZRRXGEAjZ8L1SSej.webp" title="Home" />
+      <Background
+        imageUrl="https://sunchase.backend.aait-d.com/storage/images/sliders/gLsFfVwMltoXopav24ihPhDiZRRXGEAjZ8L1SSej.webp"
+        color="rgba(0, 0, 0, 0.5)"
+        title="We Help You Realize Your Dream Property"
+      />
     </div>
   );
 };
