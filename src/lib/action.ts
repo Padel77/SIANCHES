@@ -56,26 +56,37 @@ async function GetDataInServerSide(
             headers: headers as any,
             // ? if You Want To Use Extra Method For Request Such as Cache Control, etc.
             cache: "no-store",
+            ...ExtraMethod, // Ensure you spread extra methods/options
         });
-        const data = await response.json();
-        if (response.status === 201 || response.status === 200) {
+
+        // Handle successful response
+        if (response.ok) {
+            const data = await response.json();
             return data;
-        } else if (response.status === 401) {
-            redirectPath = "/login";
-        } else {
-            throw new Error(
-                data.message || response.error || response?.data?.message
-            );
         }
+
+        // Handle unauthorized response
+        if (response.status === 401) {
+            redirectPath = "/login";
+        }
+
+        // Handle other errors
+        const errorData = await response.json();
+        throw new Error(errorData.message || "An error occurred");
+
     } catch (error) {
-        throw new Error(
-            error?.response?.message ||
-            "Something went wrong please try again later !!!"
-        );
+        if (error instanceof Error) {
+            throw new Error(error.message || "Something went wrong, please try again later!");
+        } else {
+            throw new Error("Something went wrong, please try again later!");
+        }
     } finally {
-        redirectPath && redirect(redirectPath);
+        if (redirectPath) {
+            redirect(redirectPath);
+        }
     }
 }
+
 
 
 
@@ -141,6 +152,9 @@ async function handleSignUp(prevState: any, Form_data: FormData) {
     const email = Form_data.get("email");
     const password = Form_data.get("password");
 
+    if (!email || !isValidEmail(email)) {
+        return { email: "Email is not valid" };
+    }
 
     if (Form_data.get("full_name")?.length < 10) {
         return { full_name: "full name At least 10 characters" };
@@ -181,8 +195,6 @@ async function handleSignUp(prevState: any, Form_data: FormData) {
             } else if (response.status === 403) {
                 redirectPath = `/sign-up`;
             } else {
-                console.log(data);
-
                 redirectPath = null;
                 return data?.message === 'full name at least be min :min words' ? { full_name: data?.message } : { error: data?.message };
             }

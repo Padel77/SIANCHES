@@ -8,24 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 import { Eye, EyeOff } from "lucide-react";
+import { InputDemoProps } from "@/lib/types";
 
-interface InputDemoProps {
-    id: string;
-    label?: string | JSX.Element;
-    style?: string;
-    inputStyle?: string;
-    type?: "text" | "email" | "date" | "password";
-    placeHolder?: string;
-    disabled?: boolean;
-    value: string;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    error?: string;
-    selectValue?: string;
-    selectItem?: string[];
-    defaultValue?: string;
-    isChoices?: boolean | null;
-    icon?: JSX.Element;
-}
+
 
 const InputDemo: FC<InputDemoProps> = ({
   id,
