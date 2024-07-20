@@ -109,7 +109,7 @@ async function handleLogin(prevState: any, Form_data: FormData) {
             const data = await response.json();
 
             if (response.status === 201 || response.status === 200) {
-                return { success: data?.message , token: data?.data?.token };
+                return { success: data?.message, token: data?.data?.token };
             } else if (response.status === 403) {
                 redirectPath = `/sign-up`;
             } else {
@@ -131,6 +131,75 @@ async function handleLogin(prevState: any, Form_data: FormData) {
     }
 }
 
+/* 
+  ! ############ SIGN FUNCTION ###################
+  * @param {object} prevState - previous state of the form
+  * @param {object} Form_data - form data
+  ? @returns {object} - return object with error or success message and User token
+*/
+async function handleSignUp(prevState: any, Form_data: FormData) {
+    const email = Form_data.get("email");
+    const password = Form_data.get("password");
 
 
-export { handleLogin, GetDataInServerSide }
+    if (Form_data.get("full_name")?.length < 10) {
+        return { full_name: "full name At least 10 characters" };
+    }
+
+    if (!email || !isValidEmail(email)) {
+        return { email: "Email is not valid" };
+    }
+
+    if (!password) {
+        return { password: "password is missing" };
+    }
+
+    if (Form_data.get("national_image")?.name === 'undefined') {
+        return { national_image: "national image is missing" };
+    }
+
+    // ######### Post Actions #########
+    else {
+        const newFormData = CreateFormData({
+            email,
+            password,
+            full_name: Form_data.get("full_name"),
+            national_image: Form_data.get("national_image"),
+            terms: 1,
+            password_confirmation: password,
+        });
+        let redirectPath: string | null = null;
+        try {
+            const response = await fetch(BASE_URL + "/register", {
+                method: "POST",
+                body: newFormData,
+            });
+            const data = await response.json();
+
+            if (response.status === 201 || response.status === 200) {
+                return { success: data?.message, token: data?.data?.token };
+            } else if (response.status === 403) {
+                redirectPath = `/sign-up`;
+            } else {
+                console.log(data);
+
+                redirectPath = null;
+                return data?.message === 'full name at least be min :min words' ? { full_name: data?.message } : { error: data?.message };
+            }
+        } catch (error: any) {
+            redirectPath = null;
+            throw new Error(
+                error?.response?.data?.message ||
+                error?.message ||
+                "Something went wrong. Please try again later!"
+            );
+        } finally {
+            if (redirectPath) {
+                redirect(redirectPath);
+            }
+        }
+    }
+}
+
+
+export { handleLogin, GetDataInServerSide, handleSignUp }
