@@ -17,14 +17,8 @@ import InputDemo from "@/components/helper/Input-demo";
 import FormSubmittingButton from "@/components/forms/FormSubmittingButton";
 
 import { CameraIcon, KeyRound, Mail, User } from "lucide-react";
+import { signUpFormState } from "@/lib/types";
 
-interface signUpFormState {
-  email: string;
-  password: string;
-  full_name: string;
-  national_image?: string;
-  terms: string | boolean;
-}
 
 export default function SignUpForm() {
   const [checked, setChecked] = useState(false);

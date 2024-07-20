@@ -15,11 +15,8 @@ import InputDemo from "@/components/helper/Input-demo";
 import FormSubmittingButton from "@/components/forms/FormSubmittingButton";
 
 import { KeyRound, Mail } from "lucide-react";
+import { LoginFormState } from "@/lib/types";
 
-interface LoginFormState {
-  email: string;
-  password: string;
-}
 
 export default function LoginForm() {
   const { router } = UseSearchParamsHook();

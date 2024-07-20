@@ -56,26 +56,37 @@ async function GetDataInServerSide(
             headers: headers as any,
             // ? if You Want To Use Extra Method For Request Such as Cache Control, etc.
             cache: "no-store",
+            ...ExtraMethod, // Ensure you spread extra methods/options
         });
-        const data = await response.json();
-        if (response.status === 201 || response.status === 200) {
+
+        // Handle successful response
+        if (response.ok) {
+            const data = await response.json();
             return data;
-        } else if (response.status === 401) {
-            redirectPath = "/login";
-        } else {
-            throw new Error(
-                data.message || response.error || response?.data?.message
-            );
         }
+
+        // Handle unauthorized response
+        if (response.status === 401) {
+            redirectPath = "/login";
+        }
+
+        // Handle other errors
+        const errorData = await response.json();
+        throw new Error(errorData.message || "An error occurred");
+
     } catch (error) {
-        throw new Error(
-            error?.response?.message ||
-            "Something went wrong please try again later !!!"
-        );
+        if (error instanceof Error) {
+            throw new Error(error.message || "Something went wrong, please try again later!");
+        } else {
+            throw new Error("Something went wrong, please try again later!");
+        }
     } finally {
-        redirectPath && redirect(redirectPath);
+        if (redirectPath) {
+            redirect(redirectPath);
+        }
     }
 }
+
 
 
 
@@ -109,7 +120,7 @@ async function handleLogin(prevState: any, Form_data: FormData) {
             const data = await response.json();
 
             if (response.status === 201 || response.status === 200) {
-                return { success: data?.message , token: data?.data?.token };
+                return { success: data?.message, token: data?.data?.token };
             } else if (response.status === 403) {
                 redirectPath = `/sign-up`;
             } else {
@@ -155,7 +166,7 @@ async function handleSignUp(prevState: any, Form_data: FormData) {
             const data = await response.json();
 
             if (response.status === 201 || response.status === 200) {
-                return { success: data?.message , token: data?.data?.token };
+                return { success: data?.message, token: data?.data?.token };
             } else if (response.status === 403) {
                 redirectPath = `/sign-up`;
             } else {
@@ -177,6 +188,45 @@ async function handleSignUp(prevState: any, Form_data: FormData) {
     }
 }
 
+async function handleForgetPassword(prevState: any, Form_data: FormData) {
+    const email = Form_data.get("email");
 
+    if (!email || !isValidEmail(email)) {
+        return { email: "Email is not valid" };
+    }
 
-export { handleLogin ,handleSignUp, GetDataInServerSide }
+    // ######### Post Actions #########
+    else {
+        const newFormData = CreateFormData({ email });
+        let redirectPath: string | null = null;
+        try {
+            const response = await fetch(BASE_URL + "/forget-password", {
+                method: "POST",
+                body: newFormData,
+            });
+            const data = await response.json();
+
+            if (response.status === 201 || response.status === 200) {
+                return { success: data?.message };
+            } else if (response.status === 403) {
+                redirectPath = `/sign-up`;
+            } else {
+                redirectPath = null;
+                return data?.message === 'password doest match' ? { password: data?.message } : { error: "User not found" };
+            }
+        } catch (error: any) {
+            redirectPath = null;
+            throw new Error(
+                error?.response?.data?.message ||
+                error?.message ||
+                "Something went wrong. Please try again later!"
+            );
+        } finally {
+            if (redirectPath) {
+                redirect(redirectPath);
+            }
+        }
+    }
+}
+
+export { handleLogin, handleSignUp, GetDataInServerSide, handleForgetPassword }
