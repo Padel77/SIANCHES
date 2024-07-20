@@ -1,12 +1,10 @@
+import PropertyCard from "@/components/home/PropertyCard";
 
-import HomeApp from "@/components/home/homeApp";
-import Image from "next/image";
-
-export default function Home() {
+export default async function Home() {
+  
   return (
-
-    <>
-      <>asaasasas</>
-    </>
+    <div className="container mx-auto p-4">
+      <PropertyCard />
+    </div>
   );
 }

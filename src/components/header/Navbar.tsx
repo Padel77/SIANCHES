@@ -8,6 +8,7 @@ import { NavLink } from "./NavLink";
 import { Background } from "../background/Background";
 import Logo from "../../../public/assets/Frame 33.svg";
 import { Button } from "../ui/button";
+import { NavbarProps } from "@/lib/types";
 
 const navLinks = [
   { name: "Home", link: "/" },
@@ -77,9 +78,10 @@ const NavItems = [
   },
 ];
 
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = ( data ) => {
   const [open, setOpen] = useState(true);
-
+  console.log("datadaasta",data);
+  
   return (
     <div className="top-0 left w-full relative">
       <nav className="flex px-5 h-20 py-4 text-sm lg:container absolute top-0 left-0 right-0 z-10">
