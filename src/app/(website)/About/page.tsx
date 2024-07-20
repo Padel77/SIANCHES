@@ -1,10 +1,8 @@
 import { AboutProps } from "@/lib/types";
 import React from "react";
 
-
-
-const page: React.FC<AboutProps> = () => (
+const Page: React.FC<AboutProps> = () => (
   <div className="p-4 text-xl text-center">sdssddds</div>
 );
 
-export default page;
+export default Page;
