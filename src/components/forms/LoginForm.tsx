@@ -67,7 +67,6 @@ export default function LoginForm() {
           <p>Forget your password ?</p>
         </div>
 
-
         <div className="flex items-center justify-center">
           <FormSubmittingButton name="Login" style="w-full" />
         </div>
