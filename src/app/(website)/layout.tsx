@@ -1,15 +1,24 @@
-import { Background } from "@/components/background/Background";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/header/Navbar";
+import { GetDataInServerSide } from "@/lib/action";
+import React from "react";
 
-export default function WebstieLayout({
+interface LayoutProps {
+  children: React.ReactNode;
+  customProp: string;
+}
+
+export default async function WebstieLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  customProp,
+}: LayoutProps) {
+  const data = await GetDataInServerSide("/home/");
+
   return (
     <>
-      <Navbar />
-      {children}
-      <Footer/>
+      <Navbar data={data?.navbar} />
+      {React.cloneElement(children as React.ReactElement, { customProp })}
+      <Footer />
     </>
   );
 }

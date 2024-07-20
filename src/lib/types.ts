@@ -47,3 +47,7 @@ export interface signUpFormState {
   success?: string;
   token?: string
 }
+
+export interface NavbarProps {
+    data: [];
+}
