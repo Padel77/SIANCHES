@@ -48,7 +48,7 @@ export default function SignUpForm() {
   );
   return (
     <main className="container h-full w-full flex items-center flex-col justify-center gap-4">
-      <Image src="/authLogo.png" width={200} height={200} alt="auth image" />
+      <Link href="/"><Image src="/authLogo.png" width={200} height={200} alt="auth image" /></Link>
       <form
         action={formAction}
         className="flex flex-col justify-center gap-4 w-full max-w-full px-4"

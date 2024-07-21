@@ -17,36 +17,36 @@ import FormSubmittingButton from "@/components/forms/FormSubmittingButton";
 import { KeyRound, Mail } from "lucide-react";
 import { LoginFormState } from "@/lib/types";
 
-
 export default function LoginForm() {
   const { router } = UseSearchParamsHook();
-
 
   const [state, formAction] = useFormState<LoginFormState>(handleLogin as any, {
     email: "",
     password: "",
-  })
+  });
 
   useEffect(() => {
     if (state.success) {
-      setCookie("token", state.token , Expired_time)
-      router.push("/")
-      toast.success(state.success)
+      setCookie("token", state.token, Expired_time);
+      router.push("/");
+      toast.success(state.success);
     } else if (state.error) {
-      toast.error(state.error)
+      toast.error(state.error);
     }
-  }, [state])
+  }, [state]);
 
   return (
     <main className="container h-full w-full flex items-center flex-col justify-center gap-4">
-      <Image src="/authLogo.png" width={200} height={200} alt="auth image" />
+      <Link href="/">
+        <Image src="/authLogo.png" width={200} height={200} alt="auth image" />
+      </Link>
       <form
         action={formAction}
         className="flex flex-col justify-center gap-4 w-full max-w-full px-4"
       >
         <InputDemo
           id="email"
-          label='Email Address'
+          label="Email Address"
           icon={<Mail size={18} />}
           type="email"
           placeHolder="Enter your Email Address"
@@ -55,7 +55,7 @@ export default function LoginForm() {
         <div className="flex items-end justify-between flex-col">
           <InputDemo
             id="password"
-            label='Password'
+            label="Password"
             icon={<KeyRound size={18} />}
             type="password"
             placeHolder="Enter your Password"
@@ -69,7 +69,9 @@ export default function LoginForm() {
         </div>
         <div className="flex items-center justify-center gap-2">
           <p>Don`t have an account ?</p>
-          <Link href="/sign-up" className="font-bold">Create account</Link>
+          <Link href="/sign-up" className="font-bold">
+            Create account
+          </Link>
         </div>
       </form>
     </main>
