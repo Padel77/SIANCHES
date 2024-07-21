@@ -31,7 +31,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
                 : "text-gray-300 font-medium"
             }  transition rounded-md flex items-center relative `}
           >
-            <p className="font-[400] flex">
+            <p className="font-[400] flex items-center ">
               {link.name}
               {link.children && <ChevronDown strokeWidth={1} size={16} />}
             </p>
@@ -45,8 +45,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
           </Link>
         </div>
         {link.children && link.children.length > 0 && (
-          <div className="absolute left-0 top-full hidden group-hover:block bg-white text-[#000] rounded-md p-4 ">
-            <div className="flex flex-col text-sm text-[#000] border-l w-8 p-1 gap-2 border-dark ">
+          <div className="absolute left-0 top-full block bg-white text-[#2D2D2D]  rounded-md p-4 ">
+            <div className="link-children flex flex-col text-sm text-[#000] gap-3 text-primary ">
               {renderLinks(link.children)}
             </div>
           </div>

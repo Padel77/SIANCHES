@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, Globe, Heart } from "lucide-react";
+import { AlignJustify, ArrowUpRight, Globe, Heart, MenuIcon } from "lucide-react";
 import { NavLink } from "./NavLink";
 import { Background } from "../background/Background";
 import Logo from "../../../public/assets/Frame 33.svg";
@@ -103,11 +103,18 @@ const Navbar: React.FC<NavbarProps> = ({ data }) => {
                 <Heart size={24} strokeWidth={1} />
               </Link>
             </div>
-            <Link href="/sign-up">
-              <Button className="bg-primary text-white capitalize">
-                Become an ambassador <ArrowUpRight size={16} />
-              </Button>
+            <Link
+              href="/sign-up"
+              className="md:flex hidden  items-center justify-center capitalize   p-2 text-xs   bg-[#F8F8F7] text-[#2D2D2D] border "
+            >
+              Become an ambassador <ArrowUpRight size={16} />
             </Link>
+            <Button
+              onClick={() => setOpen(!open)}
+              className="md:hidden fixed top-4 right-4  items-end justify-end  p-2 text-xs hover:bg-[#F8F8F7]   bg-[#F8F8F7] text-[#2D2D2D] border "
+            >
+              <AlignJustify  size={16} />
+            </Button>
           </div>
         </div>
 
@@ -135,7 +142,6 @@ const Navbar: React.FC<NavbarProps> = ({ data }) => {
         imageUrl="https://sunchase.backend.aait-d.com/storage/images/sliders/gLsFfVwMltoXopav24ihPhDiZRRXGEAjZ8L1SSej.webp"
         color="rgba(0, 0, 0, 0.5)"
         title="We Help You Realize Your Dream Property"
-        
       />
     </div>
   );

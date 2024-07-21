@@ -24,7 +24,7 @@ const RealAdversting: React.FC<RealEstateAdProps> = ({
           </button>
         </div>
         <Image
-          className="w-[50%] absolute end-0"
+          className="w-[50%] md:absolute hidden  end-0 "
           width={40}
           height={40}
           src={residential}

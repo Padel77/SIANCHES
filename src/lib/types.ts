@@ -62,3 +62,15 @@ export interface signUpFormState {
 export interface NavbarProps {
     data: any; // يمكنك تحديد النوع المناسب للبيانات
 }
+export interface RadioGroupInputsProps {
+  inputs_details: {
+    title: string;
+    extras: {
+      id: number;
+      title: string;
+      price: number;
+    }[];
+  };
+  choiceDefaultValue?: number[];
+  handleChange: (value: number | undefined) => void;
+}
