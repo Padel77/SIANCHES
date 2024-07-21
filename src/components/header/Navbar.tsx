@@ -9,15 +9,11 @@ import { Background } from "../background/Background";
 import Logo from "../../../public/assets/Frame 33.svg";
 import { Button } from "../ui/button";
 import { NavbarProps } from "@/lib/types";
+import { Avatar } from "../ui/avatar";
+import ProfileDropDown from "../helper/ProfileDropDown";
+import { getCookie } from "cookies-next";
 
-const navLinks = [
-  { name: "Home", link: "/" },
-  { name: "About us", link: "/About" },
-  { name: "Services", link: "/Services" },
-  { name: "Properties", link: "/Properties" },
-  { name: "Our Partners", link: "/Partners" },
-  { name: "Contact us", link: "/Contact" },
-];
+
 
 const NavItems = [
   {
@@ -78,11 +74,11 @@ const NavItems = [
   },
 ];
 
-const Navbar: React.FC<NavbarProps> = ({ data }) => {
-  const { sliders } = data;
+const Navbar: React.FC<NavbarProps> =  ({ data }) => {
   console.log("sliders", data);
 
   const [open, setOpen] = useState(false);
+  const token = getCookie("token");
 
   return (
     <div className="top-0 left w-full relative">
@@ -103,24 +99,28 @@ const Navbar: React.FC<NavbarProps> = ({ data }) => {
                 <Heart size={24} strokeWidth={1} />
               </Link>
             </div>
-            <Link
+            {!token ? (<Link
               href="/sign-up"
               className="md:flex hidden  items-center justify-center capitalize   p-2 text-xs   bg-[#F8F8F7] text-[#2D2D2D] border "
             >
               Become an ambassador <ArrowUpRight size={16} />
-            </Link>
+            </Link>) : (
+
+              <ProfileDropDown image={Logo} loading={false} />
+            )
+            }
             <Button
               onClick={() => setOpen(!open)}
               className="md:hidden fixed top-4 right-4  items-end justify-end  p-2 text-xs hover:bg-[#F8F8F7]   bg-[#F8F8F7] text-[#2D2D2D] border "
             >
-              <AlignJustify  size={16} />
+              <AlignJustify size={16} />
             </Button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {open && (
-          <div className="lg:hidden fixed top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
+          <div className="lg:hidden fixed  delay-75	 animate-ping	  top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
             <div className="flex flex-col items-center space-y-6 font-bold">
               {NavItems.map((item, index) => (
                 <Link
@@ -137,7 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ data }) => {
         )}
         {/* Mobile Menu */}
       </nav>
-
+      
       <Background
         imageUrl="https://sunchase.backend.aait-d.com/storage/images/sliders/gLsFfVwMltoXopav24ihPhDiZRRXGEAjZ8L1SSej.webp"
         color="rgba(0, 0, 0, 0.5)"

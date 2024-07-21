@@ -6,13 +6,13 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 bg-[#F3F3F1]">
+    <footer className=" bg-[#F3F3F1]">
       <div className="container px-4">
         {/* Subscription Section */}
         <div className="flex w-full justify-center">
           <div className="flex flex-col md:flex-row py-12 md:justify-between border-b border-[#3E453E] w-[90%] md:w-[80%]">
             <div className="flex flex-col  mb-2 md:mb-0 gap-2">
-              <h1 className="text-4xl font-bold  md:mb-0 md:mr-4">
+              <h1 className="text-4xl font-[900]  md:mb-0 md:mr-4">
                 Subscribe to newsletter
               </h1>
               <p className="text-gray-600 text-sm">
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
               </Link>
               <p className="text-wrap break-words max-w-xl">
                 Donec liberorum nibh euis rutrum sit luctus, at aliquet quam
-                bibendum. 
+                bibendum.
                 Fusce at dui tincidunt nulla tempor.
               </p>
               <div className="flex text-sm space-x-4">
