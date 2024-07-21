@@ -6,19 +6,26 @@ import React from "react";
 interface LayoutProps {
   children: React.ReactNode;
   customProp: string;
+  data?: [];
 }
 
 export default async function WebstieLayout({
   children,
   customProp,
 }: LayoutProps) {
-  const ruselt = await GetDataInServerSide("/home/");
-  const data = JSON.stringify(ruselt.data, null, 2);
+  let data
+  try {
+    const response = await GetDataInServerSide("/home/");
+    const result = JSON.stringify(response.data, null, 2);
+    data = JSON.parse(result);
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <>
-      <Navbar data={data} />
-      {React.cloneElement(children as React.ReactElement, { customProp })}
+      <Navbar data={data?.sliders} />
+      {React.cloneElement(children as React.ReactElement, { data })}
       <Footer />
     </>
   );

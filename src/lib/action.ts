@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
 import { revalidatePath } from "next/cache";
 import { signUpFormState } from "./types";
+import { error } from "console";
 
 interface FormData {
     get(key: string): string | null;
@@ -231,5 +232,36 @@ async function handleSignUp(prevState: any, Form_data: FormData): Promise<FormEr
     return {};
 }
 
+async function handleLogOut() {
 
-export { handleLogin, GetDataInServerSide, handleSignUp }
+    try {
+        const response = await fetch(BASE_URL + "/logout", {
+            method: "POST",
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            return { success: data?.message };
+        }
+        else {
+            return { error: data?.error };
+
+        }
+    } catch (error: any) {
+        console.error("Error during fetch:", error);
+
+        if (error instanceof TypeError) {
+            throw new Error("Network error or invalid URL");
+        } else {
+            throw new Error(
+                error?.response?.data?.message ||
+                error?.message ||
+                "Something went wrong. Please try again later!"
+            );
+        }
+    } finally {
+        redirect("/");
+    }
+}
+export { handleLogin, GetDataInServerSide, handleSignUp, handleLogOut }
