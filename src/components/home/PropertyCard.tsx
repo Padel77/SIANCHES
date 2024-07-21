@@ -5,6 +5,7 @@ import Frame1 from "../../../public/assets/home/Group.svg";
 import Frame2 from "../../../public/assets/home/Frame (1).svg";
 import Frame3 from "../../../public/assets/home/Frame (2).svg";
 import Frame4 from "../../../public/assets/home/Frame.svg";
+import { ArrowUpRight } from "lucide-react";
 
 const PropertyCard: React.FC = () => {
   return (
@@ -30,8 +31,8 @@ const PropertyCard: React.FC = () => {
             Donec bibendum nibh quis nisl luctus, at aliquet ipsum bibendum.
             Fusce at dui tincidunt nulla semper.
           </p>
-          <button className="bg-[#2D2D2D] text-white px-4 py-2 rounded">
-            Read More
+          <button className="bg-[#2D2D2D] text-white px-4 flex py-2 rounded">
+            Read More <ArrowUpRight size={16} />
           </button>
         </div>
       </div>

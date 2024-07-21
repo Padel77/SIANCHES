@@ -5,6 +5,7 @@ import { BASE_URL, CreateFormData, Expired_time } from "@/lib/utils";
 import { cookies } from "next/headers";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
 import { revalidatePath } from "next/cache";
+import { signUpFormState } from "./types";
 
 interface FormData {
     get(key: string): string | null;
@@ -14,10 +15,19 @@ interface LoginForm_data {
     email: string;
     password: string;
 }
-
+interface FormError {
+    email?: string;
+    full_name?: string;
+    password?: string;
+    national_image?: string;
+    error?: string;
+    success?: string;
+    token?: string;
+}
 
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 }
 
 function isValidUserName(userName: string): boolean {
@@ -105,42 +115,48 @@ async function handleLogin(prevState: any, Form_data: FormData) {
     }
 
     if (!password) {
-        return { password: "password is missing" };
+        return { password: "Password is missing" };
     }
 
-    // ######### Post Actions #########
-    else {
-        const newFormData = CreateFormData({ email, password });
-        let redirectPath: string | null = null;
-        try {
-            const response = await fetch(BASE_URL + "/login", {
-                method: "POST",
-                body: newFormData,
-            });
-            const data = await response.json();
+    const newFormData = CreateFormData({ email, password });
+    let redirectPath: string | null = null;
 
-            if (response.status === 201 || response.status === 200) {
-                return { success: data?.message, token: data?.data?.token };
-            } else if (response.status === 403) {
-                redirectPath = `/sign-up`;
-            } else {
-                redirectPath = null;
-                return data?.message === 'password doest match' ? { password: data?.message } : { error: "User not found" };
-            }
-        } catch (error: any) {
-            redirectPath = null;
+    try {
+        const response = await fetch(BASE_URL + "/login", {
+            method: "POST",
+            body: newFormData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            return { success: data?.message, token: data?.data?.token };
+        } else if (response.status === 403) {
+            redirectPath = `/sign-up`;
+        } else {
+            return data?.message === 'password does not match'
+                ? { password: data?.message }
+                : { error: "User not found" };
+        }
+    } catch (error: any) {
+        console.error("Error during fetch:", error);
+
+        if (error instanceof TypeError) {
+            throw new Error("Network error or invalid URL");
+        } else {
             throw new Error(
                 error?.response?.data?.message ||
                 error?.message ||
                 "Something went wrong. Please try again later!"
             );
-        } finally {
-            if (redirectPath) {
-                redirect(redirectPath);
-            }
+        }
+    } finally {
+        if (redirectPath) {
+            redirect(redirectPath);
         }
     }
 }
+
 
 /* 
   ! ############ SIGN FUNCTION ###################
@@ -148,69 +164,72 @@ async function handleLogin(prevState: any, Form_data: FormData) {
   * @param {object} Form_data - form data
   ? @returns {object} - return object with error or success message and User token
 */
-async function handleSignUp(prevState: any, Form_data: FormData) {
-    const email = Form_data.get("email");
-    const password = Form_data.get("password");
+
+async function handleSignUp(prevState: any, Form_data: FormData): Promise<FormError> {
+    const email = Form_data.get("email") as string | null;
+    const password = Form_data.get("password") as string | null;
+    const fullName = Form_data.get("full_name") as string | null;
+    const nationalImage = Form_data.get("national_image") as File | null;
 
     if (!email || !isValidEmail(email)) {
         return { email: "Email is not valid" };
     }
 
-    if (Form_data.get("full_name")?.length < 10) {
-        return { full_name: "full name At least 10 characters" };
-    }
-
-    if (!email || !isValidEmail(email)) {
-        return { email: "Email is not valid" };
+    if (!fullName || fullName.length < 10) {
+        return { full_name: "Full name must be at least 10 characters" };
     }
 
     if (!password) {
-        return { password: "password is missing" };
+        return { password: "Password is missing" };
     }
 
-    if (Form_data.get("national_image")?.name === 'undefined') {
-        return { national_image: "national image is missing" };
+    if (!nationalImage || nationalImage.name === 'undefined') {
+        return { national_image: "National image is missing" };
     }
 
     // ######### Post Actions #########
-    else {
-        const newFormData = CreateFormData({
-            email,
-            password,
-            full_name: Form_data.get("full_name"),
-            national_image: Form_data.get("national_image"),
-            terms: 1,
-            password_confirmation: password,
-        });
-        let redirectPath: string | null = null;
-        try {
-            const response = await fetch(BASE_URL + "/register", {
-                method: "POST",
-                body: newFormData,
-            });
-            const data = await response.json();
+    const newFormData = CreateFormData({
+        email,
+        password,
+        full_name: fullName,
+        national_image: nationalImage,
+        terms: 1,
+        password_confirmation: password,
+    });
 
-            if (response.status === 201 || response.status === 200) {
-                return { success: data?.message, token: data?.data?.token };
-            } else if (response.status === 403) {
-                redirectPath = `/sign-up`;
-            } else {
-                redirectPath = null;
-                return data?.message === 'full name at least be min :min words' ? { full_name: data?.message } : { error: data?.message };
-            }
-        } catch (error: any) {
+    let redirectPath: string | null = null;
+    try {
+        const response = await fetch(BASE_URL + "/register", {
+            method: "POST",
+            body: newFormData,
+        });
+        const data = await response.json();
+
+        if (response.status === 200 || response.status === 201) {
+            redirectPath = `/sign-up`;
+            return { success: data?.message, token: data?.data?.token };
+        } else if (response.status === 403) {
+            redirectPath = `/sign-up`;
+        } else {
             redirectPath = null;
-            throw new Error(
-                error?.response?.data?.message ||
-                error?.message ||
-                "Something went wrong. Please try again later!"
-            );
-        } finally {
-            if (redirectPath) {
-                redirect(redirectPath);
-            }
+            return data?.message === 'full name at least be min :min words'
+                ? { full_name: data?.message }
+                : { error: data?.message };
+        }
+    } catch (error: any) {
+        redirectPath = null;
+        throw new Error(
+            error?.response?.data?.message ||
+            error?.message ||
+            "Something went wrong. Please try again later!"
+        );
+    } finally {
+        if (redirectPath) {
+            redirect(redirectPath);
         }
     }
+
+    return {};
 }
 
 

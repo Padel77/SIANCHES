@@ -11,19 +11,22 @@ import {
 import { Button } from "../ui/button";
 
 import { ArrowLeft, Download, Plus } from "lucide-react";
+
 interface DialogFormProps {
   handleClose?: () => void;
-  handleOpen?: () => void;
-  DialogForm?: () => JSX.Element;
+}
+
+interface CommonDialogProps {
   text?: string;
+  DialogForm: (props: DialogFormProps) => JSX.Element;
   importReport?: boolean;
 }
 
-export default function CommonDialog({
+const CommonDialog: React.FC<CommonDialogProps> = ({
   text,
   DialogForm,
   importReport = true,
-}): React.FC<DialogFormProps> {
+}) => {
   const [open, setOpen] = useState(false);
 
   //------------- Global Functions ---------------
@@ -61,4 +64,6 @@ export default function CommonDialog({
       </Dialog>
     </div>
   );
-}
+};
+
+export default CommonDialog;
