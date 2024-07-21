@@ -78,15 +78,19 @@ const NavItems = [
   },
 ];
 
-const Navbar: React.FC<NavbarProps> = ( data ) => {
-  const [open, setOpen] = useState(true);
-  console.log("datadaasta",data);
-  
+const Navbar: React.FC<NavbarProps> = ({ data }) => {
+  const { sliders } = data;
+  console.log("sliders", data);
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="top-0 left w-full relative">
       <nav className="flex px-5 h-20 py-4 text-sm lg:container absolute top-0 left-0 right-0 z-10">
         <div className="flex items-center gap-x-5 m-auto">
-          <Link href="/" ><Image src={Logo} alt="Logo" /></Link>
+          <Link href="/">
+            <Image src={Logo} alt="Logo" />
+          </Link>
           <NavLink links={NavItems} />
           <div className="flex items-center text-[#f2f2f2] gap-x-2">
             <div className="flex items-center gap-x-1 text-[12px]">
@@ -99,7 +103,11 @@ const Navbar: React.FC<NavbarProps> = ( data ) => {
                 <Heart size={24} strokeWidth={1} />
               </Link>
             </div>
-            <Link href="/sign-up"><Button className="bg-primary text-white capitalize">Become an ambassador <ArrowUpRight size={16} /></Button></Link>
+            <Link href="/sign-up">
+              <Button className="bg-primary text-white capitalize">
+                Become an ambassador <ArrowUpRight size={16} />
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -122,10 +130,12 @@ const Navbar: React.FC<NavbarProps> = ( data ) => {
         )}
         {/* Mobile Menu */}
       </nav>
+
       <Background
         imageUrl="https://sunchase.backend.aait-d.com/storage/images/sliders/gLsFfVwMltoXopav24ihPhDiZRRXGEAjZ8L1SSej.webp"
         color="rgba(0, 0, 0, 0.5)"
         title="We Help You Realize Your Dream Property"
+        
       />
     </div>
   );

@@ -12,11 +12,12 @@ export default async function WebstieLayout({
   children,
   customProp,
 }: LayoutProps) {
-  const data = await GetDataInServerSide("/home/");
+  const ruselt = await GetDataInServerSide("/home/");
+  const data = JSON.stringify(ruselt.data, null, 2); 
 
   return (
     <>
-      <Navbar data={data?.navbar} />
+      <Navbar data={data} />
       {React.cloneElement(children as React.ReactElement, { customProp })}
       <Footer />
     </>

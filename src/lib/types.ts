@@ -1,4 +1,15 @@
 import { ChangeEvent } from "react";
+export interface NavLinkItem {
+  id: number;
+  name: string;
+  href: string;
+  activeLink: string;
+  children?: NavLinkItem[];
+}
+
+export interface NavLinkProps {
+  links: NavLinkItem[];
+}
 
 export interface FormData {
     get(key: string): string | null;
@@ -49,5 +60,5 @@ export interface signUpFormState {
 }
 
 export interface NavbarProps {
-    data: [];
+    data: any; // يمكنك تحديد النوع المناسب للبيانات
 }

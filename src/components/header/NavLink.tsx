@@ -5,18 +5,8 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { NavLinkItem, NavLinkProps } from "@/lib/types";
 
-interface NavLinkItem {
-  id: number;
-  name: string;
-  href: string;
-  activeLink: string;
-  children?: NavLinkItem[];
-}
-
-interface NavLinkProps {
-  links: NavLinkItem[];
-}
 
 export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
   const { pathname } = UseSearchParamsHook();
@@ -55,7 +45,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
           </Link>
         </div>
         {link.children && link.children.length > 0 && (
-          <div className="absolute left-0 top-full hidden group-hover:block bg-white text-dark rounded-md p-4 ">
+          <div className="absolute left-0 top-full hidden group-hover:block bg-white text-[#000] rounded-md p-4 ">
             <div className="flex flex-col text-sm text-[#000] border-l w-8 p-1 gap-2 border-dark ">
               {renderLinks(link.children)}
             </div>
