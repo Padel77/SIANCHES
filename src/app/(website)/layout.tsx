@@ -13,7 +13,7 @@ export default async function WebstieLayout({
   customProp,
 }: LayoutProps) {
   const ruselt = await GetDataInServerSide("/home/");
-  const data = JSON.stringify(ruselt.data, null, 2); 
+  const data = JSON.stringify(ruselt.data, null, 2);
 
   return (
     <>

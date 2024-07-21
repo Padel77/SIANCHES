@@ -59,6 +59,7 @@ export interface signUpFormState {
   token?: string
 }
 
+
 export interface NavbarProps {
     data: any; // يمكنك تحديد النوع المناسب للبيانات
 }
