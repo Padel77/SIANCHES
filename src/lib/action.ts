@@ -206,7 +206,6 @@ async function handleSignUp(prevState: any, Form_data: FormData): Promise<FormEr
         const data = await response.json();
 
         if (response.status === 200 || response.status === 201) {
-            redirectPath = `/sign-up`;
             return { success: data?.message, token: data?.data?.token };
         } else if (response.status === 403) {
             redirectPath = `/sign-up`;
