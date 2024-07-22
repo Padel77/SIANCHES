@@ -14,7 +14,7 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
       <div className="flex flex-col items-center gap-4 md:flex-row  ">
         <div className="md:w-1/2 flex md:justify-end">
           <Image
-            src={weHelpYou?.main?.image || Frame1}
+            src={weHelpYou?.main?.image || group5}
             width={300}
             height={300}
             alt="Property"
