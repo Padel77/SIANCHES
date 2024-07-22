@@ -5,20 +5,16 @@ import React from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
-  customProp: string;
+  
 }
 
-export default async function WebstieLayout({
-  children,
-  customProp,
-}: LayoutProps) {
-  const ruselt = await GetDataInServerSide("/home/");
-  const data = JSON.stringify(ruselt.data, null, 2); 
+export default async function WebsiteLayout({ children }: LayoutProps) {
+  
 
   return (
     <>
-      <Navbar data={data} />
-      {React.cloneElement(children as React.ReactElement, { customProp })}
+      <Navbar /> {/* Use fetchedData here */}
+      {children}  
       <Footer />
     </>
   );

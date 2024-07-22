@@ -1,8 +1,14 @@
-import React from "react";
+import { hasCookie } from "cookies-next";
+import { redirect } from "next/navigation";
+import { cookies } from 'next/headers'
 
-
-const page: React.FC = () => (
-  <div className="p-4 text-xl text-center">favorite</div>
-);
-
-export default page;
+export default function page() {
+  if (!hasCookie('token', { cookies })) {
+    redirect('/sign-in')
+  }
+  return (
+    <div className="container mx-auto py-4">
+      Faviorte
+    </div>
+  );
+}

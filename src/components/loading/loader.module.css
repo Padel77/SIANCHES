@@ -13,14 +13,14 @@
     transform: translate(-50%, -50%);
     width: 48em;
     height: 48em;
-    background-image: radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0),
-        radial-gradient(circle 10px, #6E2E02 100%, transparent 0);
+    background-image: radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0),
+        radial-gradient(circle 10px, #000000 100%, transparent 0);
     background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
         13em -13em, -13em -13em, 13em 13em, -13em 13em;
     background-repeat: no-repeat;
@@ -31,7 +31,7 @@
 
 .loader::after {
     font-size: 1px;
-    background: #6E2E02;
+    background: #000000;
     animation: bounce 1s ease-in infinite;
 }
 

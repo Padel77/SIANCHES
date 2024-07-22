@@ -1,8 +1,5 @@
 import React from "react";
 
-
-const page: React.FC = () => (
-  <div className="p-4 text-xl text-center">Properites</div>
-);
-
-export default page;
+export default async function page() {
+  return <div className="p-4 text-xl text-center"></div>;
+}
