@@ -2,7 +2,7 @@
 import { Background } from "@/components/background/Background";
 
 
-export default async function PropertiesPage() {
+export default function Page() {
 
 
   return (
