@@ -5,7 +5,7 @@ interface OurPartnersProps {
   partners: Item[];
 }
 interface Item {
-    ordering: number;
+  ordering: number;
   link: string;
   logo: string;
 }

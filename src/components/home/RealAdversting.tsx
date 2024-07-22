@@ -10,7 +10,7 @@ interface RealEstateAdProps {
 }
 
 const RealAdversting: React.FC<RealEstateAdProps> = ({
-  imageUrl = "https://s3-alpha-sig.figma.com/img/4bb8/38ee/5e5cf4cdfce28225b6c96a62d2f2b068?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=psF8JkIDZ035~v1vKTPvS~PJZKN~DpPYBnFcWvYwjMIQz6YHFY~oOL~p-vht99tIO55fKqGmHUHcOBkenvL8mjWyc2oqcno4Sg2dl~ZruhrlVKtRmAgWJrP5PQ~ERKNiTj3jLgyiIWDhheRqE1YvoNdte0XimdkbYYP4NdRc~lZM-SxPZ8yXqgntHmahTilN5XgVDEdZ0uZSFuxdDUbvQ0YboyCyAusy~7qpfzh6CS3gosgrTInwKRwd9ShRnCXQ3YCOgPyMnT~P1O2qAAQs6QbSbWZ0HIL3SJZIA6mou94-tFTwwra7TJO5zq6Fy9t7~UVGEdY~eaINDgsUs3kA5g",
+  imageUrl = {residential},
   title = "Sell your property with SIANCHES",
   buttonText = "Sell your unit",
 }) => {
@@ -25,11 +25,7 @@ const RealAdversting: React.FC<RealEstateAdProps> = ({
           </button>
         </div>
         <Image
-<<<<<<< HEAD
           className="md:w-[50%] md:absolute hidden md:block   end-0 "
-=======
-          className="w-[50%] absolute   end-0 "
->>>>>>> 5a1dd8417225a4855126502c447e4d06596241f1
           width={40}
           height={40}
           src={residential}

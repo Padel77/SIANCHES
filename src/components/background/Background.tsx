@@ -24,11 +24,7 @@ export const Background: React.FC<BackgroundProps> = ({
   return (
     <div
       style={style}
-<<<<<<< HEAD
       className="w-full relative h-screen bg-cover bg-center text-white"
-=======
-      className="w-full relative h-screen  bg-cover bg-center text-white "
->>>>>>> 5a1dd8417225a4855126502c447e4d06596241f1
     >
       <span
         style={{ fontFamily: "HelveticaNeueLTW05-93BlkExObl" }}
