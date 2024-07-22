@@ -27,55 +27,60 @@ const NavItems = [
   {
     id: 2,
     name: "About us",
-    href: "/About",
-    activeLink: "About",
+    href: "/about",
+    activeLink: "about",
   },
   {
     id: 3,
     name: "Services",
-    href: "/Services",
-    activeLink: "Services",
+    href: "/services",
+    activeLink: "services",
   },
   {
     id: 4,
     name: "Properties",
-    href: "/Properties",
-    activeLink: "Properties",
+    href: "/properties",
+    activeLink: "properties",
     children: [
       {
         id: 6,
         name: "Buy",
-        href: "/Properties/Buy",
-        activeLink: "Buy",
+        href: "/properties/buy",
+        activeLink: "buy",
       },
       {
         id: 7,
         name: "Sell",
-        href: "/Properties/Sell",
-        activeLink: "Sell",
+        href: "/properties/sell",
+        activeLink: "sell",
       },
       {
         id: 8,
         name: "Rent",
-        href: "/Properties/Rent",
-        activeLink: "Rent",
+        href: "/properties/rent",
+        activeLink: "rent",
       },
     ],
   },
   {
     id: 5,
     name: "Our Partners",
-    href: "/Partners",
-    activeLink: "Partners",
+    href: "/partners",
+    activeLink: "partners",
   },
   {
     id: 6,
     name: "Contact us",
-    href: "/Contact",
-    activeLink: "Contact",
+    href: "/contact",
+    activeLink: "contact",
+  },
+  {
+    id: 7,
+    name: "Favourite",
+    href: "/favourite",
+    activeLink: "favourite",
   },
 ];
-
 const MobileMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
   return (
@@ -89,7 +94,7 @@ const MobileMenu: React.FC = () => {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="lg:hidden fixed  delay-75	 animate-ping	  top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
+        <div className="lg:hidden fixed   	  top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
           <div className="flex flex-col items-center space-y-6 font-bold">
             {NavItems.map((item, index) => (
               <Link

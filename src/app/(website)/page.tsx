@@ -19,9 +19,9 @@ export default async function Home() {
   return (
     <>
       <Background
-        imageUrl={fetchedData.sliders[0]?.image}
+        imageUrl={fetchedData?.sliders[0]?.image}
         className="flex h-full text-center items-center justify-center md:text-7xl text-5xl  italic font-bold max-w-lg mx-auto"
-        title={fetchedData.sliders[0]?.title}
+        title={fetchedData?.sliders[0]?.title}
         showButton={true}
       />
       <div className="container mx-auto ">
