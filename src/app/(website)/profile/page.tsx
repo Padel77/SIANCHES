@@ -1,16 +1,9 @@
 import { Background } from "@/components/background/Background";
-import { GetDataInServerSide } from "@/lib/action";
 import Logo1 from "../../../../public/assets/about/Rectangle.svg";
 
-export default async function page() {
+export default async function ProfilePage() {
 
-  let fetchedData;
-  try {
-    const response = await GetDataInServerSide("/profile/");
-    fetchedData = JSON.stringify(response.data) || response.data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+
 
   return (
     <>

@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
 import { Toaster } from "@/components/ui/sonner"
-
 import "./globals.css";
-import { NavLink } from "@/components/header/NavLink";
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -18,7 +15,7 @@ export const metadata: Metadata = {
   description: "WE HELP YOU RElIZE YOUR DREAM PROPERTY",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

@@ -11,7 +11,7 @@ import { GetDataInServerSide } from "@/lib/action";
 export default async function Home() {
   let fetchedData;
   try {
-    const response = await GetDataInServerSide("/home/");
+    const response = await GetDataInServerSide("/home");
     fetchedData = response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
