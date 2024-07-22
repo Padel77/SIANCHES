@@ -45,7 +45,7 @@ const Properties: React.FC<propertiesProps> = ({ properties }) => {
           className="flex  my-2 justify-center items-center gap-2 "
           id="slider1"
         >
-          {properties.map((item) => (
+          {properties?.map((item) => (
             <div key={item.id} className="p-2 flex-shrink-0">
               <Link href={`/`} className="">
                 <div className="w-full h-full bg-white rounded flex ">
