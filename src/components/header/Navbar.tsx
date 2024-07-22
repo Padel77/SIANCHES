@@ -99,7 +99,7 @@ const Navbar: React.FC = async () => {
           </Link>
           <NavLink links={NavItems} />
           <div className="md:flex  items-center text-[#f2f2f2] gap-x-2">
-            <div className="md:flex hidden   items-center text-[#f2f2f2] gap-x-2">
+            <div className="md:flex hidden justify-between items-center text-[#f2f2f2] gap-x-2">
               <div className="flex items-center gap-x-1 text-[12px]">
                 <Globe size={20} strokeWidth={1} />
                 <span>Ar</span>

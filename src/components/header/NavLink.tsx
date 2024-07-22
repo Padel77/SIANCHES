@@ -27,8 +27,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
             href={link.href}
             className={`${
               isActive(link.activeLink)
-                ? "active-nav-link text-white font-bold  "
-                : "text-gray-300 font-medium"
+                ? "active-nav-link text-white font-extrabold	  "
+                : "text-[#F8F8FC] font-medium"
             }  transition rounded-md flex items-center relative `}
           >
             <p className="font-[400] flex items-center ">
@@ -39,7 +39,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
               <ChevronUp 
                 strokeWidth={1}
                 size={16}
-                className="absolute right-1/3 top-1/2  text-white top-0 mt-1"
+                className="absolute right-1/3 top-1/2  text-white  mt-1"
               />
             )}
           </Link>
