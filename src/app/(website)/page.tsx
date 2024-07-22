@@ -7,6 +7,7 @@ import PropertyCard from "@/components/home/PropertyCard";
 import RealAdversting from "@/components/home/RealAdversting";
 import { GetDataInServerSide } from "@/lib/action";
 
+
 export default async function Home() {
   let fetchedData;
   try {
@@ -19,9 +20,9 @@ export default async function Home() {
   return (
     <>
       <Background
-        imageUrl={fetchedData?.sliders[0]?.image}
+        imageUrl={fetchedData?.sliders[0]?.image || "https://s3-alpha-sig.figma.com/img/5420/8e91/86a06b633c48008f7af5904b3677f755?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oJTwb69IwPeGSJILMlXROrTAUiAOoN3c1Uvyo2qOWNFKIIMJQAZwgPIodCbG2Z2JcJq4Ds4N6pNx7U5URYUx2ndrgCMO219485STcKNMTT1WOA7TF0xcnOWKM2xb0oH-KRqRorwA-lsrJvtTZYEf7sEqoejEB6hYHnENLtiWSsmn3FbF989o3KTJqCwT0SaQ1xh1oGXcgoyvCQ7m54pBS60CC6daqo0n0gHzAL2-Be8Vvapiw4AHL7UK5JwD3zrKgJj7bxYPX1uBcOQuBVDC8Q1jH4MW-3j6pUOL1uvcrTMKIioDJvW2~oyFoIGl46DoxEuLCisYtFh3fI1588ZbCw__"}
         className="flex h-full text-center items-center justify-center md:text-7xl text-5xl  italic font-bold max-w-lg mx-auto"
-        title={fetchedData?.sliders[0]?.title}
+        title={fetchedData?.sliders[0]?.title || "We Help You Realize Your Dream Property"}
         showButton={true}
       />
       <div className="container mx-auto ">
