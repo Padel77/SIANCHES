@@ -106,7 +106,7 @@ const Navbar: React.FC = async () => {
               </div>
               <span className="border-r border-1 h-8"></span>
               <div className="flex items-center font-medium">
-                <Link href="/Favourite">
+                <Link href="/favourite">
                   <Heart size={24} strokeWidth={1} />
                 </Link>
               </div>
@@ -124,7 +124,7 @@ const Navbar: React.FC = async () => {
               )}
             </div>
             {/* Mobile Menu */}
-            <MobileMenu />
+             <MobileMenu />
             {/* Mobile Menu */}
           </div>
         </div>

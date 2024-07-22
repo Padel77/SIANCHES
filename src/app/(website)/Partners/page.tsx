@@ -1,7 +1,7 @@
 import { Background } from "@/components/background/Background";
 
 
-export default async function PartnersPage() {
+export default  function Page() {
 
 
   return (
