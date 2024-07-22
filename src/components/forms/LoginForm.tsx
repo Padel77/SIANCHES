@@ -33,7 +33,7 @@ export default function LoginForm() {
     } else if (state.error) {
       toast.error(state.error);
     }
-  }, [state]);
+  }, [state ,router]);
 
   return (
     <main className="container h-full w-full flex items-center flex-col justify-center gap-4">
