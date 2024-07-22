@@ -40,7 +40,7 @@ export default function SignUpForm() {
     } else if (state.error) {
       toast.error(state.error);
     }
-  }, [state]);
+  }, [state,router]);
 
   const handleChecked = useCallback(
     (e: any) => setChecked(!checked),

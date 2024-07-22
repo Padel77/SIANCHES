@@ -3,7 +3,6 @@ import { GetDataInServerSide } from "@/lib/action";
 import Logo1 from "../../../../public/assets/about/Rectangle.svg";
 
 export default async function page() {
-  console.log("About page", Logo1);
 
   let fetchedData;
   try {
