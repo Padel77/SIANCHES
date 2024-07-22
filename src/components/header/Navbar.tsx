@@ -110,10 +110,10 @@ const Navbar: React.FC = async () => {
                   <Heart size={24} strokeWidth={1} />
                 </Link>
               </div>
-              {token ? (
+              {!istoken ? (
                 <Link
                   href="/sign-up"
-                  className="md:flex hidden  items-center justify-center capitalize   p-2 text-xs   bg-[#F8F8F7] text-[#2D2D2D] border "
+                  className="md:flex hidden  items-center justify-center capitalize  p-2 text-xs  w-full  bg-[#F8F8F7] text-[#2D2D2D] border "
                 >
                   Become an ambassador <ArrowUpRight size={16} />
                 </Link>

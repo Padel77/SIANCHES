@@ -1,14 +1,11 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { ArrowRight, ArrowLeft, ArrowDown } from "lucide-react";
-import Rectangle1 from "../../../public/assets/home/Rectangle 16 (1).svg";
-import Rectangle2 from "../../../public/assets/home/Rectangle 16 (2).svg";
-import Rectangle3 from "../../../public/assets/home/Rectangle 16.svg";
 
 import Image from "next/image";
-import { Button } from "../ui/button";
 import DropProject from "../helper/DropProject";
+import SliderComp from "../helper/SliderComp";
 
 interface Item {
   id?: number;
@@ -21,19 +18,7 @@ interface propertiesProps {
   properties: Item[];
 }
 const Properties: React.FC<propertiesProps> = ({ properties }) => {
-  const slideLeft = () => {
-    const slider = document.getElementById("slider1");
-    if (slider) {
-      slider.scrollLeft -= 235;
-    }
-  };
 
-  const slideRight = () => {
-    const slider = document.getElementById("slider1");
-    if (slider) {
-      slider.scrollLeft += 235;
-    }
-  };
 
   return (
     <>
@@ -47,7 +32,7 @@ const Properties: React.FC<propertiesProps> = ({ properties }) => {
         >
           {properties?.map((item) => (
             <div key={item.id} className="p-2 flex-shrink-0">
-              <Link href={`/`} className="">
+              <Link href={`/properties`} className="">
                 <div className="w-full h-full bg-white rounded flex ">
                   <Image
                     width={300}
@@ -60,27 +45,15 @@ const Properties: React.FC<propertiesProps> = ({ properties }) => {
               </Link>
               <div className="flex text-center items-center justify-between p-2">
                 <p className="text-lg">{item.name}</p>
-                <DropProject projects={item?.projects} />
+                <ArrowDown
+                  size={16}
+                  cursor={"pointer"}
+                />
               </div>
             </div>
           ))}
         </div>
-        <div className="sm:flex hidden items-center gap-2 justify-center text-xl">
-          <Button
-            className="bg-none "
-            title="scroll left"
-            // onClick={function () {}} //slideLeft as () => void}
-          >
-            <ArrowLeft />
-          </Button>
-          <Button
-            className="bg-none "
-            title="scroll right"
-            // onClick={slideRight as () => void}
-          >
-            <ArrowRight />
-          </Button>
-        </div>
+        <SliderComp properties={properties} />
       </div>
     </>
   );
