@@ -14,6 +14,7 @@ import { Button } from "../ui/button";
 import { NavbarProps } from "@/lib/types";
 import { Avatar } from "../ui/avatar";
 import { getCookie, hasCookie } from "cookies-next";
+import { cookies } from "next/headers";
 import MobileMenu from "./MobileMenu";
 import { GetDataInServerSide } from "@/lib/action";
 import ProfileDropDown from "./ProfileDropDown";
@@ -78,8 +79,8 @@ const NavItems = [
 ];
 
 const Navbar: React.FC = async () => {
-  const istoken = hasCookie("token");
-  const token = getCookie("token");
+  const istoken = hasCookie("token",{ cookies });
+  const token = await getCookie("token", { cookies });
   let fetchedData;
   if (istoken && token != "") {
     try {
