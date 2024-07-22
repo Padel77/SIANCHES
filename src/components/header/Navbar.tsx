@@ -83,7 +83,7 @@ const Navbar: React.FC = async () => {
   let fetchedData;
   if (istoken && token != "") {
     try {
-      const response = await GetDataInServerSide("/profile/", token);
+      const response = await GetDataInServerSide("/profile/");
       fetchedData = JSON.stringify(response.data)
     } catch (error) {
       console.error("Error fetching data:", error);

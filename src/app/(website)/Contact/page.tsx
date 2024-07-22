@@ -1,6 +1,5 @@
 import { Background } from "@/components/background/Background";
 import ContactForm from "@/components/home/Contact";
-import { GetDataInServerSide } from "@/lib/action";
 
 
 export default async function page() {
