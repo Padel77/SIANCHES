@@ -2,10 +2,11 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import clsx from "clsx";
+import Logo1 from "../../../public/assets/about/Rectangle.svg";
 
 interface BackgroundProps {
   imageUrl?: string;
-  className?: string; 
+  className?: string;
   title?: string;
   showButton?: boolean;
 }
@@ -17,7 +18,7 @@ export const Background: React.FC<BackgroundProps> = ({
   showButton
 }) => {
   const style = {
-    backgroundImage: imageUrl ? `url(${imageUrl})` : undefined,
+    backgroundImage: imageUrl ? `url(${imageUrl})` : `url(${Logo1})`,
     backgroundColor: imageUrl ? "#0f0f0f0" : "transparent",
   };
 
