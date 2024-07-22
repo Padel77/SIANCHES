@@ -61,7 +61,7 @@ export default function ProfileDropDown({
       <DropdownMenuContent>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="hover:bg-slate-100 w-full rounded-sm py-2 font-bold">
-          <Link href={"/organizationTasks/profile"} className="w-full">
+          <Link href={"/profile"} className="w-full">
             Profile
           </Link>
         </DropdownMenuItem>
