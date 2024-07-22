@@ -2,7 +2,7 @@ import { hasCookie } from "cookies-next";
 import { redirect } from "next/navigation";
 import { cookies } from 'next/headers'
 
-export default function page() {
+export default function FaviortePage() {
   if (!hasCookie('token', { cookies })) {
     redirect('/sign-in')
   }

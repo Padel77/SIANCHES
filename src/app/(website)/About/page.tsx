@@ -1,8 +1,8 @@
 import { Background } from "@/components/background/Background";
 
-export default async function page() {
+export default async function AboutPage() {
 
- 
+
   return (
     <>
       <Background

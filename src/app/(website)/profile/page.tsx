@@ -1,9 +1,9 @@
 import { Background } from "@/components/background/Background";
 import Logo1 from "../../../../public/assets/about/Rectangle.svg";
 
-export default async function page() {
+export default async function ProfilePage() {
 
- 
+
 
   return (
     <>

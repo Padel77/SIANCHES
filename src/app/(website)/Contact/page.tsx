@@ -2,7 +2,7 @@ import { Background } from "@/components/background/Background";
 import ContactForm from "@/components/home/Contact";
 
 
-export default async function page() {
+export default async function ContactPage() {
 
 
   return (
