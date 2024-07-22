@@ -1,21 +1,13 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   AlignJustify,
-  ArrowUpRight,
-  Globe,
-  Heart,
-  MenuIcon,
+
 } from "lucide-react";
-import { NavLink } from "./NavLink";
 import Logo from "../../../public/assets/Frame 33.svg";
 import { Button } from "../ui/button";
-import { NavbarProps } from "@/lib/types";
-import { Avatar } from "../ui/avatar";
-import ProfileDropDown from "../helper/ProfileDropDown";
-import { hasCookie } from "cookies-next";
+
 
 const NavItems = [
   {
