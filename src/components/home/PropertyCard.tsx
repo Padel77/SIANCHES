@@ -58,7 +58,7 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             alt="Property"
             className="w-6 h-6"
           />
-          <span>{weHelpYou?.icons?.icon_2.text}</span>
+          <span>{weHelpYou?.icons?.icon_2.text }</span>
         </div>
         <div className="flex flex-col items-center gap-3">
           <Image
