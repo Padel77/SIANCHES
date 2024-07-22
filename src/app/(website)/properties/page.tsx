@@ -13,7 +13,7 @@ export default function Page() {
         title={"Properties"}
         showButton={false}
       />
-      <div className="p-4 text-xl text-center"> Our services</div>
+      <div className="p-4 text-xl text-center"> Properties</div>
     </>
   );
 }
