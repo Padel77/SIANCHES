@@ -8,36 +8,19 @@ import Rectangle3 from "../../../public/assets/home/Rectangle 16.svg";
 
 import Image from "next/image";
 import { Button } from "../ui/button";
+import DropProject from "../helper/DropProject";
 
 interface Item {
-  id: number;
-  img: string;
+  id?: number;
+  image: string;
   description: string;
-  price: number;
+  name?: string;
+  projects?: [];
 }
-
-const Properties: React.FC = () => {
-  const filteredItems: Item[] = [
-    {
-      id: 1,
-      img: Rectangle1,
-      description: "New Cairo",
-      price: 200,
-    },
-    {
-      id: 2,
-      img: Rectangle2,
-      description: "October",
-      price: 100,
-    },
-    {
-      id: 3,
-      img: Rectangle3,
-      description: "Seaside",
-      price: 100,
-    },
-  ];
-
+interface propertiesProps {
+  properties: Item[];
+}
+const Properties: React.FC<propertiesProps> = ({ properties }) => {
   const slideLeft = () => {
     const slider = document.getElementById("slider1");
     if (slider) {
@@ -62,22 +45,22 @@ const Properties: React.FC = () => {
           className="flex  my-2 justify-center items-center gap-2 "
           id="slider1"
         >
-          {filteredItems.map((item) => (
+          {properties.map((item) => (
             <div key={item.id} className="p-2 flex-shrink-0">
               <Link href={`/`} className="">
                 <div className="w-full h-full bg-white rounded flex ">
                   <Image
+                    width={300}
+                    height={300}
                     className="h-full rounded"
-                    src={item.img}
+                    src={item.image}
                     alt={item.description}
                   />
                 </div>
               </Link>
               <div className="flex text-center items-center justify-between p-2">
-                <p className="text-lg">{item.description}</p>
-                <p>
-                  <ArrowDown size={16} />
-                </p>
+                <p className="text-lg">{item.name}</p>
+                <DropProject projects={item?.projects} />
               </div>
             </div>
           ))}
