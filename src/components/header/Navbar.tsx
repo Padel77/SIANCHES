@@ -13,10 +13,10 @@ import Logo from "../../../public/assets/Frame 33.svg";
 import { Button } from "../ui/button";
 import { NavbarProps } from "@/lib/types";
 import { Avatar } from "../ui/avatar";
-import ProfileDropDown from "../helper/ProfileDropDown";
 import { getCookie, hasCookie } from "cookies-next";
 import MobileMenu from "./MobileMenu";
 import { GetDataInServerSide } from "@/lib/action";
+import ProfileDropDown from "./ProfileDropDown";
 
 const NavItems = [
   {
