@@ -66,6 +66,7 @@ export interface contactUsFormState {
   phone_number: string;
 }
 
+
 export interface NavbarProps {
   data?: any; // يمكنك تحديد النوع المناسب للبيانات
 }

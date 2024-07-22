@@ -6,7 +6,10 @@ import Frame2 from "../../../public/assets/home/Frame (1).svg";
 import Frame3 from "../../../public/assets/home/Frame (2).svg";
 import Frame4 from "../../../public/assets/home/Frame.svg";
 import { ArrowUpRight } from "lucide-react";
+<<<<<<< HEAD
 import { WeHelpYouProps } from "@/lib/types";
+=======
+>>>>>>> 5a1dd8417225a4855126502c447e4d06596241f1
 
 const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
   return (

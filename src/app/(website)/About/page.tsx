@@ -3,8 +3,8 @@ import { GetDataInServerSide } from "@/lib/action";
 import Logo1 from "../../../../public/assets/about/Rectangle.svg";
 
 export default async function page() {
-  console.log("About page",Logo1);
-  
+  console.log("About page", Logo1);
+
   let fetchedData;
   try {
     const response = await GetDataInServerSide("/about/");
@@ -18,7 +18,6 @@ export default async function page() {
       <Background
         imageUrl={Logo1 || ""}
         className="flex h-full text-center items-center justify-center md:text-7xl text-5xl  italic font-bold max-w-lg mx-auto"
-
         title={"Get Ready to live for unlimited living experience"}
         showButton={false}
       />

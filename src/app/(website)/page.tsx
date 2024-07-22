@@ -6,7 +6,6 @@ import Properties from "@/components/home/Properties";
 import PropertyCard from "@/components/home/PropertyCard";
 import RealAdversting from "@/components/home/RealAdversting";
 import { GetDataInServerSide } from "@/lib/action";
-// import RecentlyAdded from "@/components/home/RecentlyAdded";
 
 export default async function Home() {
   let fetchedData;
