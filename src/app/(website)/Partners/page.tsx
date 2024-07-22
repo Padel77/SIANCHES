@@ -1,5 +1,4 @@
 import { Background } from "@/components/background/Background";
-import Partners from "@/components/home/OurPartners";
 import { GetDataInServerSide } from "@/lib/action";
 
 
@@ -12,7 +11,7 @@ export default async function page() {
   } catch (error) {
     console.error("Error fetching data:", error);
   }
-
+  
   return (
     <>
       <Background
@@ -21,7 +20,7 @@ export default async function page() {
         title={"Parteners"}
         showButton={false}
       />
-      <div className="p-4 text-xl text-center"><Partners partners={fetchedData} /></div>
+      <div className="p-4 text-xl text-center">Partners</div>
     </>
   );
 }
