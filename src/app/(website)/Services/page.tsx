@@ -1,17 +1,9 @@
 
 import { Background } from "@/components/background/Background";
-import { GetDataInServerSide } from "@/lib/action";
 
 
 export default async function page() {
 
-  let fetchedData;
-  try {
-    const response = await GetDataInServerSide("/partners");
-    fetchedData = JSON.stringify(response.data) || response.data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
 
   return (
     <>

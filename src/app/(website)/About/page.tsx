@@ -1,18 +1,8 @@
 import { Background } from "@/components/background/Background";
-import { GetDataInServerSide } from "@/lib/action";
-import Logo1 from "../../../../public/assets/about/Rectangle.svg";
-import Image from "next/image";
 
 export default async function page() {
 
-  let fetchedData;
-  try {
-    const response = await GetDataInServerSide("/about/");
-    fetchedData = JSON.stringify(response.data) || response.data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-
+ 
   return (
     <>
       <Background
