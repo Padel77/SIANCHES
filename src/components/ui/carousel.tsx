@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper,SwiperClass, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import Image from 'next/image';
 import 'swiper/css';
@@ -16,7 +16,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const carouselRef : any = useRef(null);
 
-    const handleSlideChange = (swiper: Swiper) => {
+    const handleSlideChange = (swiper: SwiperClass) => {
         setActiveIndex(swiper.activeIndex);
     };
 
