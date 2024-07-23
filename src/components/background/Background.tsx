@@ -33,7 +33,7 @@ export const Background: React.FC<BackgroundProps> = ({
       >
         {title}
         {showButton && <Link
-          href="/Properties"
+          href="/properties"
           className="absolute flex items-center justify-center  md:my-6 gap-2 top-2/3 p-3 text-xs mx-auto bg-[#F8F8F7] text-[#2D2D2D] border"
         >
           Explore Properties <ArrowUpRight size={16} />
