@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import { ArrowUpRight, Heart, MapPin } from 'lucide-react';
 import Link from 'next/link';
 interface CarouselProps {
-    items: any[];
+    items?: any[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
@@ -50,7 +50,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                     },
                 }}
             >
-                {items.map((item, index) => (
+                {items?.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div className="flex bg-[#F8F8FC] flex-col   ">
                             <Image width={300} height={300} src={"https://s3-alpha-sig.figma.com/img/70bc/832e/e9a6f4143a2e8abd6732887be3f29b0c?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HWmZWhqxPeQMABR7EJ6Cbihoku5jKNv~dQVfCtmZcl85qP2sczXf7rOnUL~UsbgrIMEfl9zoN~IckGDB3Fo-udIsD423kKxE20acSuaq4GCND-akHg922UrrDFrQw3mCPPcWakicfG1b7hWStHlFTkwmTPw0pzLtKb7jy5gm9S9zdTr8k-1I3rgNxba1WufjOr2x1q9IrrBOk2CmawCbQG-366mPiLG~KNIqEV4C0K2AWxtaRqVTytZBUbxUkb~WolnujIo5xE~O7MNCvCx09bF3YyZBS79v-4kFf6TLGWCTRqBRCbuDEVmnfzUpH-RRYngMF7duWtSfVNvr9xSo5Q__"} alt={item.altText} className="w-full h-auto rounded-lg" />
@@ -66,7 +66,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                                     <p >< MapPin size={16} /></p>
                                     <p >{item.address}</p>
                                 </div>
-                                {item.features.map((items: any) => (
+                                {item?.features.map((items: any) => (
                                     <div key={items.id} className='flex items-center justify-start text-sm gap-2 border-b mb-2 py-2'>
                                         <Image alt={items.name} src={items.icon} width={16} height={16} />
                                         <p className=" ">{items.name}</p>
