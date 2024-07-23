@@ -5,6 +5,7 @@ import OurPartners from "@/components/home/OurPartners";
 import Properties from "@/components/home/Properties";
 import PropertyCard from "@/components/home/PropertyCard";
 import RealAdversting from "@/components/home/RealAdversting";
+import Carousel from "@/components/ui/carousel";
 import { GetDataInServerSide } from "@/lib/action";
 
 
