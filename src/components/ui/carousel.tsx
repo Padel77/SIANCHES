@@ -14,7 +14,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const carouselRef = useRef(null);
+    const carouselRef : any = useRef(null);
 
     const handleSlideChange = (swiper: Swiper) => {
         setActiveIndex(swiper.activeIndex);
