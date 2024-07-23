@@ -1,15 +1,13 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore from 'swiper';
 import Image from 'next/image';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { ArrowUpRight, Heart, MapPin } from 'lucide-react';
 import Link from 'next/link';
-SwiperCore.use([Navigation, Pagination]);
 interface CarouselProps {
     items: any[];
 }
