@@ -29,7 +29,7 @@ export default async function Home() {
         <PropertyCard weHelpYou={fetchedData?.we_help_you} />
         <Properties properties={fetchedData?.properties} />
         <RealAdversting />
-        {/* <RecentlyAdded recently_added={fetchedData?.recently_added} /> */}
+        <Carousel items={fetchedData?.recently_added} />
         <BeAmbassador />
         <OurPartners partners={fetchedData?.partners} />
         <ContactForm
