@@ -66,7 +66,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                                     <p >< MapPin size={16} /></p>
                                     <p >{item.address}</p>
                                 </div>
-                                {item.features.map((items) => (
+                                {item.features.map((items: any) => (
                                     <div key={items.id} className='flex items-center justify-start text-sm gap-2 border-b mb-2 py-2'>
                                         <Image alt={items.name} src={items.icon} width={16} height={16} />
                                         <p className=" ">{items.name}</p>
