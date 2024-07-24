@@ -64,8 +64,8 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                                 {item.is_favorite && <div className='absolute top-4 right-4 rounded-full bg-[#FCFCFB] p-1 '><Heart color='red' fill={item.is_favorite ? 'red' : 'none'} strokeWidth={0.5} size={24} /></div>}
                                 {/* <div className='absolute top-50 right-4'><p className="text-gray-700">{item.type}</p>
                             </div> */}
-                                <div className='px-4 flex flex-col gap-2'>
-                                    <div className=''>
+                                <div className='px-4 flex flex-col gap-2 rounded-b-lg'>
+                                    <div>
                                         {item?.title && <h3 className="text-[20px]  font-[400]  mt-4">{item?.title}</h3>}
                                         {item?.name && <div className="flex text-center items-center justify-between p-2">
                                             <p className="text-lg">{item.name}</p>
