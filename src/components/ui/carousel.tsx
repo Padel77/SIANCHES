@@ -6,7 +6,7 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from 'swiper/modules';
 
 import { ArrowUpRight, Heart, MapPin } from 'lucide-react';
 import Link from 'next/link';
@@ -37,7 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                 pagination={{
                           dynamicBullets: true,
                         }}
-               modules={[Pagination]}
+                modules={[Pagination, Navigation]}
                 onSlideChange={handleSlideChange}
                 spaceBetween={30}
                 breakpoints={{
