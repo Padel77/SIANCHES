@@ -11,6 +11,7 @@ import Link from 'next/link';
 interface CarouselProps {
     items?: any[];
 }
+import { Pagination } from "swiper/modules";
 
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -32,7 +33,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                 ref={carouselRef}
                 navigation={true}
                 watchSlidesProgress={true}
-                pagination={{ clickable: true }}
+                pagination={{
+                          dynamicBullets: true,
+                        }}
                 onSlideChange={handleSlideChange}
                 spaceBetween={30}
                 breakpoints={{
