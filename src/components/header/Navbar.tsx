@@ -79,13 +79,13 @@ const NavItems = [
 ];
 
 const Navbar: React.FC = async () => {
-  const istoken = hasCookie("token",{ cookies });
+  const istoken = hasCookie("token", { cookies });
   const token = await getCookie("token", { cookies });
   let fetchedData;
   if (istoken && token != "") {
     try {
       const response = await GetDataInServerSide("/profile/");
-      fetchedData = JSON.stringify(response.data)
+      fetchedData = JSON.stringify(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -93,8 +93,8 @@ const Navbar: React.FC = async () => {
 
   return (
     <div className="top-0 left w-full relative">
-      <nav className="flex px-5 h-20 py-4 text-sm lg:container absolute top-0 left-0 right-0 z-10">
-        <div className="flex items-center gap-x-5 m-auto">
+      <nav className=" h-20 py-4 text-sm lg:container absolute top-0 left-0 right-0 z-10">
+        <div className="flex justify-around  items-center    ">
           <Link href="/">
             <Image src={Logo} alt="Logo" />
           </Link>
@@ -125,7 +125,7 @@ const Navbar: React.FC = async () => {
               )}
             </div>
             {/* Mobile Menu */}
-             <MobileMenu />
+            <MobileMenu />
             {/* Mobile Menu */}
           </div>
         </div>

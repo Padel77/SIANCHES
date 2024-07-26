@@ -1,13 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  AlignJustify,
-
-} from "lucide-react";
+import { AlignJustify } from "lucide-react";
 import Logo from "../../../public/assets/Frame 33.svg";
 import { Button } from "../ui/button";
-
 
 const NavItems = [
   {
@@ -79,14 +75,14 @@ const MobileMenu: React.FC = () => {
     <div className="top-0 left w-full relative">
       <Button
         onClick={() => setOpen(!open)}
-        className="md:hidden fixed top-4 right-4  items-end justify-end  p-2 text-xs hover:bg-[#F8F8F7]   bg-[#F8F8F7] text-[#2D2D2D] border "
+        className="md:hidden fixed top-4 right-4  items-end justify-end p-2    hover:bg-[#F8F8F7]   bg-[#F8F8F7] text-[#2D2D2D] border "
       >
-        <AlignJustify size={16} />
+        <AlignJustify size={20} />
       </Button>
 
       {/* Mobile Menu */}
       {open && (
-        <div className="lg:hidden fixed   	  top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
+        <div className="lg:hidden fixed   top-20 left-4 right-4 z-10 py-8 bg-white drop-shadow-md">
           <div className="flex flex-col items-center space-y-6 font-bold">
             {NavItems.map((item, index) => (
               <Link
