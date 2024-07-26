@@ -22,7 +22,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
   const renderLinks = (links: NavLinkItem[]) => {
     return links.map((link) => (
       <div key={link.id} className="relative group">
-        <div className="flex items-center">
+        <div className="flex items-center  ">
           <Link
             href={link.href}
             className={`${

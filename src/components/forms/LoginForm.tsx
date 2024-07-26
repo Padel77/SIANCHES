@@ -33,16 +33,16 @@ export default function LoginForm() {
     } else if (state.error) {
       toast.error(state.error);
     }
-  }, [state ,router]);
+  }, [state, router]);
 
   return (
-    <main className="container h-full w-full flex items-center flex-col justify-center gap-4">
+    <main className="container md:h-full h-screen w-full flex items-center flex-col justify-center gap-4">
       <Link href="/">
         <Image src="/authLogo.png" width={200} height={200} alt="auth image" />
       </Link>
       <form
         action={formAction}
-        className="flex flex-col justify-center gap-4 w-full max-w-full px-4"
+        className="flex flex-col justify-center   gap-4 w-full max-w-full px-4"
       >
         <InputDemo
           id="email"

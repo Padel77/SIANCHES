@@ -1,47 +1,22 @@
-// import * as React from "react";
+import React from "react";
+import Carousel from "../ui/carousel";
 
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel";
-// import { Card, CardContent } from "@/components/ui/card";
-// interface RecentlyAddedProps {
-//   recently_added: Item[];
-// }
-// interface Item {
-//   id: number;
-//   image: string;
-//   description: string;
-//   type: string;
-// }
+interface Item {
+  id?: number;
+  image: string;
+  description: string;
+  name?: string;
+  projects?: [];
+}
+interface RecentlyAddedProps {
+  recentlyAdded: Item[];
+}
+const RecentlyAdded: React.FC<RecentlyAddedProps> = ({ recentlyAdded }) => {
+  return (
+    <>
+      <Carousel items={recentlyAdded} />
+    </>
+  );
+};
 
-// const RecentlyAdded: React.FC<RecentlyAddedProps> = ({ recently_added }) => {
-//   return (
-//     <Carousel
-//       opts={{
-//         align: "start",
-//       }}
-//       className="w-full max-w-sm"
-//     >
-//       <CarouselContent>
-//         {Array.from({ length: 5 }).map((_, index) => (
-//           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-//             <div className="p-1">
-//               <Card>
-//                 <CardContent className="flex aspect-square items-center justify-center p-6">
-//                   <span className="text-3xl font-semibold">{index + 1}</span>
-//                 </CardContent>
-//               </Card>
-//             </div>
-//           </CarouselItem>
-//         ))}
-//       </CarouselContent>
-//       <CarouselPrevious />
-//       <CarouselNext />
-//     </Carousel>
-//   );
-// };
-// export default RecentlyAdded;
+export default RecentlyAdded;
