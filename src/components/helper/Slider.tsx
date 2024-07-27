@@ -38,8 +38,8 @@ const Slider: React.FC<SliderProps> = ({ items }) => {
                 id="slider1"
                 className="w-full flex overflow-x-scroll scrollbar-hide scroll-smooth"
             >
-                {items.map((item) => (
-                    <div key={item.id} className="p-2 flex-shrink-0 w-60">
+                {items.map((item,index) => (
+                    <div key={index} className="p-2 flex-shrink-0 w-60">
                         <Link href={`/`}>
                             <div className="bg-white rounded">
                                 <Image

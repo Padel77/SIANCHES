@@ -12,9 +12,10 @@ import { ArrowDown, ArrowUpRight, Heart, MapPin } from "lucide-react";
 import Link from "next/link";
 interface CarouselProps {
   items?: any[];
+  title?: string;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ items }) => {
+const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef: any = useRef(null);
 
@@ -30,6 +31,11 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 
   return (
     <div className="">
+      {title && (
+        <div className="text-[#2D2D2D]  text-4xl my-10 flex justify-center font-black ">
+          {title}
+        </div>
+      )}
       <div className="relative ">
         <Swiper
           ref={carouselRef}
@@ -108,9 +114,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                     </div>
                   )}
                   {item?.features &&
-                    item?.features?.map((items: any) => (
+                    item?.features?.map((items: any, index: any) => (
                       <div
-                        key={items?.id}
+                        key={index}
                         className="flex items-center justify-start text-sm gap-2 border-b mb-2 py-2"
                       >
                         <Image

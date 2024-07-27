@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import group5 from "../../../public/assets/home/Group5.svg";
-import Frame1 from "../../../public/assets/home/Group.svg";
-import Frame2 from "../../../public/assets/home/Frame (1).svg";
-import Frame3 from "../../../public/assets/home/Frame (2).svg";
-import Frame4 from "../../../public/assets/home/Frame.svg";
+import group5 from "@../../../public/assets/home/Group5.svg";
+import Frame1 from "@../../../public/assets/home/Group.svg";
+import Frame2 from "@../../../public/assets/home/Frame (1).svg";
+import Frame3 from "@../../../public/assets/home/Frame (2).svg";
+import Frame4 from "@../../../public/assets/home/Frame.svg";
 import { ArrowUpRight } from "lucide-react";
 import { WeHelpYouProps } from "@/lib/types";
 
@@ -64,7 +64,7 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             sizes="100%"
             loading="lazy"
           />
-          <span>{weHelpYou?.icons?.icon_2.text }</span>
+          <span>{weHelpYou?.icons?.icon_2.text}</span>
         </div>
         <div className="flex flex-col items-center gap-3">
           <Image

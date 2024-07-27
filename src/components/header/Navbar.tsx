@@ -9,10 +9,7 @@ import {
   MenuIcon,
 } from "lucide-react";
 import { NavLink } from "./NavLink";
-import Logo from "../../../public/assets/Frame 33.svg";
-import { Button } from "../ui/button";
-import { NavbarProps } from "@/lib/types";
-import { Avatar } from "../ui/avatar";
+import Logo from "@../../../public/assets/Frame 33.svg";
 import { getCookie, hasCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import MobileMenu from "./MobileMenu";

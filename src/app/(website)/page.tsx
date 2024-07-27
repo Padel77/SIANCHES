@@ -36,7 +36,7 @@ export default async function Home() {
       />
       <div className="container mx-auto ">
         <PropertyCard weHelpYou={fetchedData?.we_help_you} />
-        <Properties properties={fetchedData?.properties} />
+        <Properties properties={fetchedData?.properties}  />
         <RealAdversting />
         <RecentlyAdded recentlyAdded={fetchedData?.recently_added} />
         <BeAmbassador />

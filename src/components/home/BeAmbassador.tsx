@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import residential from "../../../public/assets/beAmbasedor/wooden-keychain.svg";
+import residential from "@../../../public/assets/beAmbasedor/wooden-keychain.svg";
 import { ArrowUpRight } from "lucide-react";
 
 interface BeAmbassadorProps {
