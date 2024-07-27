@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import clsx from "clsx";
-import Logo1 from "../../../public/assets/about/Rectangle.svg";
+import Logo1 from "@../../../public/assets/about/Rectangle.svg";
 import Breadcrumb from "../ui/breadcrumb";
 
 interface BackgroundProps {

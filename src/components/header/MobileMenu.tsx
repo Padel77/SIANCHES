@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AlignJustify } from "lucide-react";
-import Logo from "../../../public/assets/Frame 33.svg";
 import { Button } from "../ui/button";
 
 const NavItems = [

@@ -14,7 +14,7 @@ interface RecentlyAddedProps {
 const RecentlyAdded: React.FC<RecentlyAddedProps> = ({ recentlyAdded }) => {
   return (
     <>
-      <Carousel items={recentlyAdded} />
+      <Carousel items={recentlyAdded} title="Recently added" />
     </>
   );
 };

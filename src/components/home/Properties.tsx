@@ -16,7 +16,7 @@ const Properties: React.FC<propertiesProps> = ({ properties }) => {
 
   return (
     <>
-      <Carousel items={properties} />
+      <Carousel items={properties} title="Properties" />
     </>
   );
 };

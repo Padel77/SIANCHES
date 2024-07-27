@@ -17,7 +17,7 @@ import {
   User,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import Logo from "../../../public/assets/home/hand-presenting.svg";
+import Logo from "@../../../public/assets/home/hand-presenting.svg";
 import { Button } from "../ui/button";
 interface ContactFormProps {
   phoneNumber?: string;
