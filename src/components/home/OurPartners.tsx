@@ -22,7 +22,7 @@ const Partners: React.FC<OurPartnersProps> = ({ partners }) => {
                 height={200}
                 key={Item.logo}
                 src={Item.logo}
-                alt={Item.logo}
+                alt={Item.logo || "logo"}
                 className="partner-logo"
               />
             </Link>

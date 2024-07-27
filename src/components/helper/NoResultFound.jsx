@@ -9,6 +9,8 @@ export default function NoResultFound() {
         width={400}
         height={400}
         className="flex items-center justify-center col-span-3"
+        sizes="100vw"
+        loading="lazy"
       />
     </div>
   );

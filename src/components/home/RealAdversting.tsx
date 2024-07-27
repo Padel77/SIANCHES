@@ -30,6 +30,8 @@ const RealAdversting: React.FC<RealEstateAdProps> = ({
           height={40}
           src={residential}
           alt="Real Estate"
+          sizes="100%"
+          loading="lazy"
         />
       </div>
     </div>

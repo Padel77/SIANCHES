@@ -19,6 +19,8 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             height={300}
             alt="Property"
             className="w-[90%] h-[70%] object-cover"
+            sizes="100%"
+            loading="lazy"
           />
         </div>
         <div className="p-6 md:w-1/2  ">
@@ -47,6 +49,8 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             src={weHelpYou?.icons?.icon_1.icon || Frame1}
             alt="Property"
             className="w-6 h-6"
+            sizes="100%"
+            loading="lazy"
           />
           <span>{weHelpYou?.icons?.icon_1.text}</span>
         </div>
@@ -57,6 +61,8 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             src={weHelpYou?.icons?.icon_2.icon || Frame2}
             alt="Property"
             className="w-6 h-6"
+            sizes="100%"
+            loading="lazy"
           />
           <span>{weHelpYou?.icons?.icon_2.text }</span>
         </div>
@@ -67,6 +73,8 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             src={weHelpYou?.icons?.icon_3.icon || Frame3}
             alt="Property"
             className="w-6 h-6"
+            sizes="100%"
+            loading="lazy"
           />
           <span>{weHelpYou?.icons?.icon_3.text}</span>
         </div>
@@ -77,6 +85,8 @@ const PropertyCard: React.FC<WeHelpYouProps> = ({ weHelpYou }) => {
             src={weHelpYou?.icons?.icon_4.icon || Frame4}
             alt="Property"
             className="w-6 h-6"
+            sizes="100%"
+            loading="lazy"
           />
           <span>{weHelpYou?.icons?.icon_4.text}</span>
         </div>
