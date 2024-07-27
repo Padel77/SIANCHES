@@ -45,7 +45,9 @@ const Slider: React.FC<SliderProps> = ({ items }) => {
                                 <Image
                                     className="h-full rounded"
                                     src={item.img}
-                                    alt={item.description}
+                                    alt={item.description || "image"}
+                                    sizes="100%"
+                                    loading="lazy"
                                 />
                             </div>
                         </Link>
