@@ -131,7 +131,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
                         <p className=" ">{items?.name}</p>
                       </div>
                     ))}
-                      <div/>
+                </div>
                 </div>
                 {item?.price && (
                   <div className="flex justify-between px-2 py-2 items-center">
