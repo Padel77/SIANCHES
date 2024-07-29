@@ -75,7 +75,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
                   }
                   alt={item.altText || "image"}
                   loading="lazy" // Lazy loading
-                  className=" rounded-lg"
+                  className=" rounded-lg w-fit	revert-layer"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive images
                 />
 
