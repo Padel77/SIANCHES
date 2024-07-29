@@ -75,7 +75,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
                   }
                   alt={item.altText || "image"}
                   loading="lazy" // Lazy loading
-                  className="w-full h-auto rounded-lg"
+                  className=" rounded-lg"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive images
                 />
 
@@ -117,7 +117,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
                     item?.features?.map((items: any, index: any) => (
                       <div
                         key={index}
-                        className="flex items-center justify-start text-sm gap-2 border-b mb-2 py-2"
+                        className="flex  md:flex-row items-center justify-start text-sm gap-2 border-b mb-2 py-2"
                       >
                         <Image
                           alt={items?.name || "icon"}
