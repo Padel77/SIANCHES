@@ -113,9 +113,8 @@ const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
                       <p>{item.address}</p>
                     </div>
                   )}
-                <div className="flex items-center justify-between text-sm gap-6 border-b mb-2 py-2">
-                  {item?.features &&
-                    item?.features?.map((items: any, index: any) => (
+               {item?.features && <div className="flex items-center justify-between text-sm gap-6 border-b mb-2 py-2">
+                  {item?.features?.map((items: any, index: any) => (
                       <div
                         key={index}
                         className="flex md:flex-row items-center justify-start gap-2 "
@@ -131,7 +130,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, title }) => {
                         <p className=" ">{items?.name}</p>
                       </div>
                     ))}
-                </div>
+                </div>}
                 </div>
                 {item?.price && (
                   <div className="flex justify-between px-2 py-2 items-center">
